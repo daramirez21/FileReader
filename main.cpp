@@ -22,15 +22,13 @@ int main()
         cout<<"What file do you want to open? ";
         getline(cin, fileName);
 
-
+       
         //STEP 1: open the fileStream for input, using the fileName specified
 
         ifstream outfile;
         fileStream.open( fileName.c_str(), ios::in );
-
-      
-    do
-    {
+do {
+  
         if( fileStream.is_open())
         {
                 cout<<fileName<<" opened.\nFILE CONTENTS:\n";
@@ -42,7 +40,7 @@ int main()
 
                         std::getline (fileStream, line);
 
-                        cin.ignore(); 
+                       
 
                         if(!(line.empty()))
                         {
@@ -82,9 +80,7 @@ int main()
         {
                 cout<<fileName<<" could not be opened.\n";
         }
-
-    } while(response == y );
-    
+} while (response = y);
     
     return 0;
 }
