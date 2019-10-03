@@ -6,51 +6,85 @@ using namespace std;
 
 int main()
 {
-  string fileName; //to get the name of the file to open
-  string line; //to store a single line of a text file
-  fstream fileStream; //to open a file for reading
+        string fileName; //to get the name of the file to open
+        string line; //to store a single line of a text file
+        fstream fileStream; //to open a file for reading
 
-  cout<<"What file do you want to open? ";
-  getline(cin, fileName);
+        int nlines;
+        int characters;
+   
+        char y;
+        char response = 'y';
+
+        nlines = 0;
+        characters = 0;  
+
+        cout<<"What file do you want to open? ";
+        getline(cin, fileName);
+
+
+        //STEP 1: open the fileStream for input, using the fileName specified
+
+        ifstream outfile;
+        fileStream.open( fileName.c_str(), ios::in );
+
+      
+    do
+    {
+        if( fileStream.is_open())
+        {
+                cout<<fileName<<" opened.\nFILE CONTENTS:\n";
+
+
+
+                while (!(fileStream.eof()))
+                {
+
+                        std::getline (fileStream, line);
+
+                        cin.ignore(); 
+
+                        if(!(line.empty()))
+                        {
+
+                                cout << line << endl;
+
+                                nlines = nlines + 1 ;
+                                        
+                                characters += 1 + line.length() ;
+
+
+
+                        }
+
+
+                }
+
+                cout << "METADATA" << endl;
+
+                cout << "File: " << fileName << endl;
+
+                cout << "Lines: "<< nlines << endl;
+
+                cout << "Characters: " << characters << endl;
+
+                cout << "Analyze another file (y/n)? " << endl;
+                cin >> response;
   
-  //STEP 1: open the fileStream for input, using the fileName specified
 
-  ifstream outfile;
-  fileStream.open( fileName.c_str(), ios::in );
 
-  if( fileStream.is_open()  /*STEP 2: check to see if the fileStream successfully opened*/   )
-  {
-    cout<<fileName<<" opened.\nFILE CONTENTS:\n";
-   
-   // STEP 3.
+                //STEP 4: close the fileStream
 
-   while (!(fileStream.eof()))
-  {
+                fileStream.close();
 
-   std::getline (fileStream, line);
-   
-  cout << line << endl;
+                  }
+        else
+        {
+                cout<<fileName<<" could not be opened.\n";
+        }
 
-    //STEP 3: repeat the following until the end-of-file (eof) has been reached...
-
-   
-
-    // 3A: read a line from fileStream into the variable line
-   
+    } while(response == y );
     
-    // 3B: display the line, followed by an endline
-  
-    //STEP 4: close the fileStream
-  
-  
-  }
-
-   fileStream.close();
-  }
-  else
-  {
-    cout<<fileName<<" could not be opened.\n";
-  }
-
-  return 0;
+    
+    return 0;
 }
