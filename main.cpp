@@ -12,9 +12,10 @@ int main()
 
         int nlines;
         int characters;
-   
+  
         char y;
-        char response = 'y';
+        char response;
+
 
         nlines = 0;
         characters = 0;  
@@ -27,12 +28,10 @@ int main()
 
         ifstream outfile;
         fileStream.open( fileName.c_str(), ios::in );
-do {
-  
+  do {
         if( fileStream.is_open())
         {
                 cout<<fileName<<" opened.\nFILE CONTENTS:\n";
-
 
 
                 while (!(fileStream.eof()))
@@ -49,7 +48,7 @@ do {
 
                                 nlines = nlines + 1 ;
                                         
-                                characters += 1 + line.length() ;
+                                characters += 0 + line.length() ;
 
 
 
@@ -76,11 +75,18 @@ do {
                 fileStream.close();
 
                   }
+ 
         else
         {
                 cout<<fileName<<" could not be opened.\n";
-        }
-} while (response = y);
-    
+                cout<< "METADATA" << endl;
+                cout<< "File: "<<fileName<<endl;
+                cout<< "Lines: "<<nlines << endl;
+                cout<< "Characters: "<<characters<<endl;
+                cout<< "Analyze another file (y/n)? "<<endl;
+                cin>> response;
+                         
+                        }
+  }  while(response=y);
     return 0;
 }
