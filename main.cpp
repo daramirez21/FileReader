@@ -19,27 +19,23 @@ int main()
 
         nlines = 0;
         characters = 0;  
-do {
+
         cout<<"What file do you want to open? ";
         getline(cin, fileName);
 
-       
         //STEP 1: open the fileStream for input, using the fileName specified
 
         ifstream outfile;
         fileStream.open( fileName.c_str(), ios::in );
-   
+  do{ 
         if( fileStream.is_open())
         {
                 cout<<fileName<<" opened.\nFILE CONTENTS:\n";
-
 
                 while (!(fileStream.eof()))
                 {
 
                         std::getline (fileStream, line);
-
-                       
 
                         if(!(line.empty()))
                         {
@@ -50,10 +46,7 @@ do {
                                         
                                 characters += 0 + line.length() ;
 
-
-
                         }
-
 
                 }
 
