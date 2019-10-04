@@ -41,7 +41,7 @@ int main()
                 }
                
                 cout<< "METADATA" << endl;
-                cout<< "File: " << endl;
+                cout<< "File: " << fileName << endl;
                 cout<< "Lines: " << nlines << endl;
                 cout<< "Characters: " << characters << endl;
                 fileStream.close();
@@ -56,7 +56,7 @@ int main()
                  cout << "Characters: " << characters << endl;
                 }
 
-                cout << "Analyze another file (y/n)?" ;
+                cout << "Analyze another file (y/n)? " ;
                 cin >> choice;
                 cin.ignore();
   
