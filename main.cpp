@@ -6,20 +6,19 @@ using namespace std;
 
 int main()
 {
+    char choice = 'y';
+
+    do {
+
         string fileName; //to get the name of the file to open
         string line; //to store a single line of a text file
         fstream fileStream; //to open a file for reading
 
         int nlines;
         int characters;
-  
-        char choice = 'y';
-
 
         nlines = 0;
         characters = 0;  
-
-    do {
 
         cout<<"What file do you want to open? ";
         getline(cin, fileName);
@@ -42,10 +41,9 @@ int main()
 
                                 cout << line << endl;
 
-                                nlines = nlines + 1 ;
+                                nlines = nlines + 1;
                                         
-                                characters = characters + line.length() ;
-
+                                characters = characters + line.length();
                         }
 
                 }
@@ -77,5 +75,6 @@ int main()
                          
          }
   }  while( choice=='y' || choice == 'Y' );
+
     return 0;
 }
