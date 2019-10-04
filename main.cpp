@@ -13,38 +13,38 @@ int main()
         int nlines;
         int characters;
   
-        char choice;
-        char y;
+        char choice = 'y';
 
 
         nlines = 0;
         characters = 0;  
+
+    do {
 
         cout<<"What file do you want to open? ";
         getline(cin, fileName);
 
         //STEP 1: open the fileStream for input, using the fileName specified
 
-        ifstream outfile;
         fileStream.open( fileName.c_str(), ios::in );
-  do{ 
-        if( fileStream.is_open())
+ 
+        if( fileStream.is_open() )
         {
                 cout<<fileName<<" opened.\nFILE CONTENTS:\n";
 
-                while (!(fileStream.eof()))
+                while (!fileStream.eof() )
                 {
 
-                        std::getline (fileStream, line);
+                        getline( fileStream, line);
 
-                        if(!(line.empty()))
+                        if(!line.empty() )
                         {
 
                                 cout << line << endl;
 
                                 nlines = nlines + 1 ;
                                         
-                                characters += 0 + line.length() ;
+                                characters = characters + line.length() ;
 
                         }
 
@@ -60,12 +60,7 @@ int main()
 
                 cout << "Analyze another file (y/n)? " << endl;
                 cin >> choice;
-  
-
-
-                //STEP 4: close the fileStream
-
-                fileStream.close();
+                cin.ignore();
 
                   }
  
@@ -78,8 +73,9 @@ int main()
                 cout << "Characters: " <<characters<<endl;
                 cout << "Analyze another file (y/n)? " <<endl;
                 cin >> choice;
+                cin.ignore();
                          
          }
-  }  while( choice=='y'|| choice == 'Y' );
+  }  while( choice=='y' || choice == 'Y' );
     return 0;
 }
