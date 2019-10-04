@@ -56,7 +56,7 @@ int main()
                  cout << "Characters: " << characters << endl;
                 }
 
-                cout << "Analyze another file (y/n)?" <<endl;
+                cout << "Analyze another file (y/n)?" ;
                 cin >> choice;
                 cin.ignore();
   
